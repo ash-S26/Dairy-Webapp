@@ -1,0 +1,34 @@
+<%- include("partials/header"); -%> <!-- Including header file with help of ejs here so no need to write entire code again -->
+
+<h1>Home</h1>
+<p><%= startContent %></p>  <!-- output value of startContent variable into html -->
+
+<% posts.forEach(function (item) { %>   <!-- javascript code forEach is used to loop over an array -->
+  <h1><%= item.title.charAt(0).toUpperCase()+item.title.slice(1)  %></h1>
+<%  if(item.content.length > 100){ %>
+    <p> <%= item.content.substring(0, 100) + " ... " %><a href="/posts/<%=item.title %>">Read more</a></p>
+  <%} else { %>
+    <p> <%= item.content %></p>
+  <% } %>
+<% }); %>
+
+
+<%- include("partials/footer"); -%>
+
+<!-- 
+  <%   %>   allows us to write javascript code between them inside html file/template , every javascript line neds
+            to be enclosed between this symbols
+  <%=  %>   used to output value of variable name written inside it into html
+  <%- -%>   allows to inject raw html code from one template to another
+
+-->
+
+<!-- also try to write if else in below fashion
+
+  if () {
+
+  } else {
+
+  }
+
+-->
